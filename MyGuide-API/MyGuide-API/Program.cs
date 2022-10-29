@@ -1,4 +1,5 @@
 using MyGuide.BLL;
+using MyGuide.BLL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<ICityService, CityService>();
 
 BLLModule.Load(builder.Services, builder.Configuration);
 
