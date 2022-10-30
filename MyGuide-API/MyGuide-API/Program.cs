@@ -3,9 +3,17 @@ using MyGuide.BLL.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+const string BPMPolicy = "MyGuidePolicy";
 
 builder.Services.AddControllers();
+
+builder.Services.AddCors(options => options.AddPolicy(BPMPolicy, builder =>
+{
+    builder.AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .WithExposedHeaders("Token-Expired");
+}));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,6 +1,5 @@
 ﻿using MyGuide.BLL.Models;
 using MyGuide.DAL.DbContexts;
-using MyGuide.DAL.Entities;
 
 namespace MyGuide.BLL.Services
 {
@@ -14,7 +13,7 @@ namespace MyGuide.BLL.Services
         }
         public CityModel GetCityData()
         {
-            var city =  _db.Cities.FirstOrDefault();
+            var city = _db.Cities.FirstOrDefault();
 
             return new CityModel() { Name = city.Name, Description = city.Description };
         }
